@@ -7,3 +7,7 @@ bin/
 # IDE 설정 파일
 .idea/
 *.iml
+.vscode/
+
+# macOS 시스템 파일
+.DS_Store

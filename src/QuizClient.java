@@ -20,13 +20,15 @@ public class QuizClient {
             System.out.println("Using default server settings: " + DEFAULT_HOST + ":" + DEFAULT_PORT);
         }
 
-        // 서버와 연결 시작
+        Socket socket = null; // 소켓 선언
         try (
-            Socket socket = new Socket(host, port); // 서버와 소켓 연결
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 서버로부터 입력받는 스트림
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // 서버로 출력하는 스트림
+            // 서버와 연결
             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in)) // 사용자 입력받는 스트림
         ) {
+            socket = new Socket(host, port); // 서버와 소켓 연결
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 서버로부터 입력받는 스트림
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true); // 서버로 출력하는 스트림
+
             System.out.println("Connected to the Quiz Server."); // 서버 연결 성공 메시지
             String serverMessage; // 서버로부터 받은 메시지 저장 변수
 
@@ -62,6 +64,16 @@ public class QuizClient {
 
         } catch (IOException e) { // 서버 연결 실패 또는 통신 중 오류 발생
             System.out.println("Error connecting to server: " + e.getMessage());
+        } finally {
+            // 소켓 명시적으로 닫기
+            if (socket != null && !socket.isClosed()) {
+                try {
+                    socket.close();
+                    System.out.println("Socket closed.");
+                } catch (IOException e) {
+                    System.out.println("Error closing socket: " + e.getMessage());
+                }
+            }
         }
     }
 }

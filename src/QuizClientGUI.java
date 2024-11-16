@@ -6,7 +6,7 @@ import java.io.*;
 import java.net.*;
 
 public class QuizClientGUI {
-    // 서버 정보 파일 경로
+    // 서버 정보 파일 경로 
     private static final String CONFIG_FILE = "src/server_info.txt"; // 텍스트 파일로 서버 정보 불러오기
     private static final String DEFAULT_HOST = "localhost"; // 기본 호스트 (로컬 서버)
     private static final int DEFAULT_PORT = 1234; // 기본 포트 번호

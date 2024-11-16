@@ -7,7 +7,7 @@ public class QuizServer {
     private static final String QUIZ_FILE = "src/quiz.txt"; // 퀴즈 파일 경로
     private static final String DEFAULT_HOST = "localhost"; // 기본 호스트 이름
     private static final int DEFAULT_PORT = 1234; // 기본 포트 번호
-    private static volatile boolean running = true; // 서버 실행 상태 플래그
+    private static volatile boolean running = true; // 서버 실행 상태 플래그 
 
     public static void main(String[] args) {
         String host = DEFAULT_HOST; // 초기값으로 기본 호스트 설정
